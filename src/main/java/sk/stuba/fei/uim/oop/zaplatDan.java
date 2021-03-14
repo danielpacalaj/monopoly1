@@ -6,7 +6,10 @@ public class zaplatDan extends policko{
 
     public zaplatDan(int poziciaNaPloche){
         super(poziciaNaPloche);
-        //this.meno = meno;
+        this.meno = meno;
+    }
+
+    public void zaplat(){
 
     }
 }
