@@ -15,4 +15,8 @@ public class budova  extends policko{
         this.majitel = null;
     }
 
+    public void kup(int cena){
+        //hrac.peniaze = peniaze - cena;
+    }
+
 }

@@ -10,6 +10,6 @@ public class zaplatDan extends policko{
     }
 
     public void zaplat(){
-
+        //do something npr zaplat
     }
 }
