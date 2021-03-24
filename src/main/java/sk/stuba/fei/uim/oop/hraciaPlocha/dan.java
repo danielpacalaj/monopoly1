@@ -1,8 +1,10 @@
 package sk.stuba.fei.uim.oop.hraciaPlocha;
 
 public class dan extends policko{
-    public dan(int poziciaNaPloche, String menoPolicka) {
-        super(poziciaNaPloche, menoPolicka);
+
+    public String menoPolicka;
+    public dan(int poziciaNaPloche) {
+        super(poziciaNaPloche);
         this.menoPolicka = "Zaplat dan!";
     }
 

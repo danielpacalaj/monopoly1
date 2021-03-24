@@ -1,12 +1,12 @@
 package sk.stuba.fei.uim.oop;
 
-import sk.stuba.fei.uim.oop.hraciaPlocha.budova;
-import sk.stuba.fei.uim.oop.hraciaPlocha.hraciaPlocha;
-import sk.stuba.fei.uim.oop.hraciaPlocha.sanca;
-import sk.stuba.fei.uim.oop.hraciaPlocha.vazenie;
+import sk.stuba.fei.uim.oop.hraciaPlocha.hraciaDoska;
+
+//import java.util.hraciaDoska.Class;
 
 public class Assignment1 {
     public static void main(String[] args) {
 
+        hraciaDoska volaco = new hraciaDoska();
     }
 }
