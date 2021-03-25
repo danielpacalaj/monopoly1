@@ -6,4 +6,9 @@ public class start extends policko{
         super(poziciaNaPloche);
         this.menoPolicka = "Start";
     }
+
+    @Override
+    public String toString() {
+        return "Start";
+    }
 }

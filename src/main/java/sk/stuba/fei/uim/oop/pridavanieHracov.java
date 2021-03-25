@@ -13,10 +13,22 @@ public class pridavanieHracov {
     }
 
     public void pridajVsetkych(){
+        System.out.println("Zadajte pocet hracov!");
         int pocetHracov = readInt();
         int i;
         for(i=1;i<=pocetHracov;i++){
-            hraci.add(new hrac(readString()+" "+i));
+            hraci.add(new hrac(readString("Zadajte meno "+i+" hraca")));
         }
+
     }
+
+    /*public ArrayList<hrac> getHraci() {
+        return hraci;
+    }
+
+    public void setHraci(ArrayList<hrac> hraci) {
+        this.hraci = hraci;
+    }
+
+     */
 }

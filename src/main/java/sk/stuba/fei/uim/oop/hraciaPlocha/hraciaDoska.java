@@ -39,5 +39,15 @@ public class hraciaDoska {
         doska.add(new sanca(23));
         doska.add(new budova(24,"Dom D4",130,70));
 
+        System.out.println("Hracia doska zrobena!\n---------------------");
     }
+
+    public ArrayList<policko> getDoska() {
+        return doska;
+    }
+
+    public void setDoska(ArrayList<policko> doska) {
+        this.doska = doska;
+    }
+
 }

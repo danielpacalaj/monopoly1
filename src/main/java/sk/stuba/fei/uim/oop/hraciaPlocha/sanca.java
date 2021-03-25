@@ -7,4 +7,8 @@ public class sanca extends policko{
         this.menoPolicka = "Sanca";
     }
 
+    @Override
+    public String toString() {
+        return "Sanca";
+    }
 }

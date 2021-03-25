@@ -6,4 +6,9 @@ public class vazenie extends policko{
         super(poziciaNaPloche);
         this.menoPolicka = "Vazenie";
     }
+
+    @Override
+    public String toString() {
+        return "Vazenie";
+    }
 }

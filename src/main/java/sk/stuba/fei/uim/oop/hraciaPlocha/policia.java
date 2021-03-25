@@ -6,4 +6,9 @@ public class policia extends policko{
         super(poziciaNaPloche);
         this.menoPolicka = "Policia";
     }
+
+    @Override
+    public String toString() {
+        return "Policia";
+    }
 }

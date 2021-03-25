@@ -10,4 +10,9 @@ public class dan extends policko{
     public void zaplatDan(){
        // int peniaze = getPeniaze();
     }
+
+    @Override
+    public String toString() {
+        return "Dan";
+    }
 }
