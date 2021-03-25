@@ -1,5 +1,7 @@
 package sk.stuba.fei.uim.oop.hraciaPlocha;
 
+//fei.uim.oop.hraciaPlocha.hrac;
+
 public class policia extends policko{
 
     public policia(int poziciaNaPloche) {
@@ -10,5 +12,8 @@ public class policia extends policko{
     @Override
     public String toString() {
         return "Policia";
+    }
+    public void chodDoVazenia(){
+
     }
 }

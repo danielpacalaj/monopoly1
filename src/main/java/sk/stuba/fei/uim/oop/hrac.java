@@ -9,17 +9,18 @@ import static sk.stuba.fei.uim.oop.zKlavesnice.readString;
 
 public class hrac {
     public String meno;
-    protected boolean stav;
-    protected budova nedhnutelnosti;
-    protected int peniaze;
-    protected int poziciaHracaNaploche;
+    protected boolean stav = true;
+    protected budova nedhnutelnosti =null;
+    protected int peniaze =100;
+    protected int poziciaHracaNaploche = 1;
+    protected int pocetKolVoVazeni = 0;
 
     public hrac(String meno){
         this.meno = meno;
-        this.stav = true;
-        this.nedhnutelnosti = null;
-        this.peniaze = 500;
-        this.poziciaHracaNaploche = 1;
+        //this.stav = true;
+        //this.nedhnutelnosti = null;
+        //this.peniaze = 500;
+        //this.poziciaHracaNaploche = 1;
     }
 
     public int hodKockou(){
@@ -29,6 +30,8 @@ public class hrac {
         this.poziciaHracaNaploche = poziciaHracaNaploche+jedenHod;
         if (poziciaHracaNaploche>=24){
             this.poziciaHracaNaploche=poziciaHracaNaploche-24;
+            setPeniaze(peniaze+20);
+            System.out.println("Presiel si startom. Dostal si 20 peniazov");
         }
         return jedenHod;
     }
@@ -69,4 +72,11 @@ public class hrac {
         this.poziciaHracaNaploche = poziciaHracaNaploche;
     }
 
+    public int getPocetKolVoVazeni() {
+        return pocetKolVoVazeni;
+    }
+
+    public void setPocetKolVoVazeni(int pocetKolVoVazeni) {
+        this.pocetKolVoVazeni = pocetKolVoVazeni;
+    }
 }

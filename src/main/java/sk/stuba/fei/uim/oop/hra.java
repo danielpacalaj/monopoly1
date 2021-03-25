@@ -1,11 +1,11 @@
 package sk.stuba.fei.uim.oop;
 
-import sk.stuba.fei.uim.oop.hraciaPlocha.budova;
-import sk.stuba.fei.uim.oop.hraciaPlocha.hraciaDoska;
-import sk.stuba.fei.uim.oop.hraciaPlocha.policia;
-import sk.stuba.fei.uim.oop.hraciaPlocha.policko;
+import sk.stuba.fei.uim.oop.hraciaPlocha.*;
+import sk.stuba.fei.uim.oop.sancoveKarty.balicek;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Random;
 
 import static sk.stuba.fei.uim.oop.zKlavesnice.*;
@@ -13,6 +13,8 @@ import static sk.stuba.fei.uim.oop.zKlavesnice.*;
 public class hra {
 
     public ArrayList<hrac> hraci = new ArrayList<hrac>();
+    public ArrayList<balicek> karty = new ArrayList<balicek>();
+
 
     public hra() {
         zrobHru();
@@ -33,16 +35,23 @@ public class hra {
 
 
     public void zrobHru(){
-        hraciaDoska v = new hraciaDoska();
+        hraciaDoska plocha = new hraciaDoska();
         pridajHracov();
-        int ka=0;
-        while(ka!=1){
+
+        while(this.hraci.size()>1){
             for (int i = 0; i < this.hraci.size(); i++) {
                 System.out.println("-----------------\nNa rade je hrac " + this.hraci.get(i).getMeno());
-                this.hraci.get(i).hodKockou();
-                System.out.println("Skocil si na toto policko " + v.doska.get(this.hraci.get(i).getPoziciaHracaNaploche()));
+                if(this.hraci.get(i).getPocetKolVoVazeni()>0){
+                   this.hraci.get(i).setPocetKolVoVazeni(this.hraci.get(i).getPocetKolVoVazeni()-1);
+                   System.out.println("Si v base. Stojis este"+this.hraci.get(i).getPocetKolVoVazeni()+" kol");
+                }
+                else {
+                    this.hraci.get(i).hodKockou();
+                }
+                System.out.println("Skocil si na toto policko " + plocha.doska.get(this.hraci.get(i).
+                        getPoziciaHracaNaploche()));
 
-                var pomocnePole = v.doska.get(this.hraci.get(i).getPoziciaHracaNaploche());
+                var pomocnePole = plocha.doska.get(this.hraci.get(i).getPoziciaHracaNaploche());
 
                 if(pomocnePole instanceof budova){
                     if(((budova)pomocnePole).getVlastnikId()<0){
@@ -53,7 +62,8 @@ public class hra {
                         if(preKupenie == 'A'){
                             this.hraci.get(i).setPeniaze(this.hraci.get(i).getPeniaze()-
                                     (((budova)pomocnePole).getCenaPredaj()));
-                            System.out.println("Budovu si kupil! Gratulujeme");
+                            System.out.println("Budovu si kupil! Gratulujeme\nZostalo ti "+this.hraci.get(i).
+                                    getPeniaze()+" peniazov");
                             ((budova)pomocnePole).setVlastnikId(i);
                             this.hraci.get(i).setNedhnutelnosti(((budova)pomocnePole));
                         }
@@ -61,23 +71,41 @@ public class hra {
                             System.out.println("Budovu si nekupil");
                         }
                     }
-                    else if(((budova)pomocnePole).getVlastnikId()>0){
+                    else if(((budova)pomocnePole).getVlastnikId()>=0){
                         System.out.println("Budova uz niekomu patri! Zaplat najomne!");
                         this.hraci.get(i).setPeniaze(this.hraci.get(i).getPeniaze()-
                                 (((budova)pomocnePole).getCenaNajmu()));
                         System.out.println("Zaplatil si "+(((budova)pomocnePole).getCenaNajmu())+" ostalo ti "
                                 +this.hraci.get(i).getPeniaze());
-                        this.hraci.get(((budova)pomocnePole).vlastnikId).setPeniaze(this.hraci.get(((budova)pomocnePole).vlastnikId)
-                                .getPeniaze()+ (((budova)pomocnePole).getCenaNajmu()));
+                        this.hraci.get(((budova)pomocnePole).vlastnikId).setPeniaze(this.hraci.get(((budova)
+                                pomocnePole).vlastnikId).getPeniaze()+ (((budova)pomocnePole).getCenaNajmu()));
                         System.out.println("Vlasnik dostal "+(((budova)pomocnePole).getCenaNajmu()));
                     }
                 }
 
                 if(pomocnePole instanceof policia){
+                    this.hraci.get(i).setPoziciaHracaNaploche(7);
+                    this.hraci.get(i).setPocetKolVoVazeni(3);
+                    System.out.println("Dostal si sa do basy! Stojis 3 kola");
+                }
 
+                if(pomocnePole instanceof dan){
+                    this.hraci.get(i).setPeniaze(this.hraci.get(i).getPeniaze()-80);
+                    System.out.println("Zaplatil si dan 80. Ostalo ti "+this.hraci.get(i).getPeniaze());
+                }
+
+                if(pomocnePole instanceof sanca){
+                    //do daco
+                }
+                if(this.hraci.get(i).getPeniaze()<0){
+                    System.out.println(this.hraci.get(i).getMeno()+" prehral");
+                    this.hraci.remove(i);
+                    System.out.println("Minul si vsetky prachy. Prehral si. Haha(skodoradosny smiech)");
                 }
             }
         }
+
+        System.out.println("--------------------\nVyhral hrac "+this.hraci.get(0).getMeno());
 
     }
 
