@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop;
+/*package sk.stuba.fei.uim.oop;
 
 import java.util.ArrayList;
 
@@ -9,26 +9,18 @@ public class pridavanieHracov {
     public ArrayList<hrac> hraci = new ArrayList<hrac>();
 
     public pridavanieHracov() {
-        pridajVsetkych();
+        pridajHracov();
     }
 
-    public void pridajVsetkych(){
+    public int pridajHracov(){
         System.out.println("Zadajte pocet hracov!");
         int pocetHracov = readInt();
         int i;
         for(i=1;i<=pocetHracov;i++){
-            hraci.add(new hrac(readString("Zadajte meno "+i+" hraca")));
+            System.out.println("Zadajte meno "+i+" hraca");
+            hraci.add(new hrac(readString()+" "+i));
         }
-
+        return pocetHracov;
     }
-
-    /*public ArrayList<hrac> getHraci() {
-        return hraci;
-    }
-
-    public void setHraci(ArrayList<hrac> hraci) {
-        this.hraci = hraci;
-    }
-
-     */
 }
+*/

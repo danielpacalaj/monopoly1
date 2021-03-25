@@ -13,7 +13,7 @@ import static sk.stuba.fei.uim.oop.zKlavesnice.*;
 public class hra {
 
     public ArrayList<hrac> hraci = new ArrayList<hrac>();
-    public ArrayList<balicek> karty = new ArrayList<balicek>();
+    //public ArrayList<balicek> karty = new ArrayList<balicek>();
 
 
     public hra() {
@@ -32,11 +32,13 @@ public class hra {
 
     }
 
-
-
     public void zrobHru(){
         hraciaDoska plocha = new hraciaDoska();
+        balicek karticky = new balicek();
         pridajHracov();
+
+        int pocitadloSance = 0;
+
 
         while(this.hraci.size()>1){
             for (int i = 0; i < this.hraci.size(); i++) {
@@ -95,7 +97,14 @@ public class hra {
                 }
 
                 if(pomocnePole instanceof sanca){
-                    //do daco
+                        pocitadloSance++;
+                        karticky.karty.get(pocitadloSance);
+                        System.out.println(karticky.karty.get(pocitadloSance));
+                        if(pocitadloSance==4){
+                            pocitadloSance=0;
+                        }
+
+
                 }
                 if(this.hraci.get(i).getPeniaze()<0){
                     System.out.println(this.hraci.get(i).getMeno()+" prehral");
@@ -109,5 +118,7 @@ public class hra {
 
     }
 
-
+    public ArrayList<hrac> getHraci() {
+        return hraci;
+    }
 }
