@@ -2,7 +2,7 @@ package sk.stuba.fei.uim.oop;
 
 import sk.stuba.fei.uim.oop.hraciaPlocha.*;
 import sk.stuba.fei.uim.oop.sancoveKarty.balicek;
-
+import java.util.Scanner;
 import java.util.*;
 
 import static sk.stuba.fei.uim.oop.zKlavesnice.*;
@@ -19,24 +19,28 @@ public class hra {
 
     public void pridajHracov(){
         boolean pridavanie = true;
-        while(pridavanie) {
-            try {
-                System.out.println("Zadajte pocet hracov!");
-                int pocetHracov = readInt();
-                int i;
-                for (i = 1; i <= pocetHracov; i++) {
-                    System.out.println("Zadajte meno " + i + " hraca");
-                    hraci.add(new hrac(readString()));
-                }
+        int pocetHracov=0;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Zadajte pocet hracov!");
+        while(pridavanie==true) {
+            if (input.hasNextInt()){
+                pocetHracov = input.nextInt();
                 pridavanie = false;
-            } catch (Exception e) {
-                System.out.println("Chybny vstup. Opakujte prosim!");
-                //readInt();
             }
+            else {
+                System.out.println("Zly vstup! Skuste znova.");
+                input.next();
+            }
+        }
+        int i;
+        for (i = 1; i <= pocetHracov; i++) {
+            System.out.println("Zadajte meno " + i + " hraca");
+            hraci.add(new hrac(readString()));
         }
     }
 
     public void zrobHru(){
+        uvod uvodik = new uvod();
         hraciaDoska plocha = new hraciaDoska();
         balicek karticky = new balicek();
         pridajHracov();
@@ -46,10 +50,11 @@ public class hra {
 
         while(this.hraci.size()>1){
             for (int i = 0; i < this.hraci.size(); i++) {
-                System.out.println("-----------------\nNa rade je hrac " + this.hraci.get(i).getMeno());
+                System.out.println("---------------------\nNa rade je hrac " + this.hraci.get(i).getMeno());
                 if(this.hraci.get(i).getPocetKolVoVazeni()>0){
                    this.hraci.get(i).setPocetKolVoVazeni(this.hraci.get(i).getPocetKolVoVazeni()-1);
                    System.out.println("Si v base. Stojis este"+this.hraci.get(i).getPocetKolVoVazeni()+" kol");
+                   continue;
                 }
                 else {
                     this.hraci.get(i).hodKockou();
@@ -101,9 +106,11 @@ public class hra {
                 }
 
                 if(pomocnePole instanceof sanca){
+
+                        this.hraci.get(i).setPoziciaHracaNaploche(karticky.karty.get(pocitadloSance).getA());
+                        System.out.println("Sanca ta presunula na policko "+this.hraci.get(i).poziciaHracaNaploche+
+                                " co je "+plocha.doska.get(this.hraci.get(i).getPoziciaHracaNaploche()));
                         pocitadloSance++;
-                        karticky.karty.get(pocitadloSance);
-                        System.out.println(karticky.karty.get(pocitadloSance));
                         if(pocitadloSance==4){
                             pocitadloSance=0;
                         }
@@ -118,8 +125,8 @@ public class hra {
             }
         }
 
-        System.out.println("--------------------\nVyhral hrac "+this.hraci.get(0).getMeno());
-
+        System.out.println("---------------------\nVyhral hrac "+this.hraci.get(0).getMeno());
+        this.hraci.remove(0);
     }
 
     public ArrayList<hrac> getHraci() {

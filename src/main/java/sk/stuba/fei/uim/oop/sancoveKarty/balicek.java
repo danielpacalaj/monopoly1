@@ -14,6 +14,6 @@ public class balicek {
         karty.add(new karta3());
         karty.add(new karta4());
         karty.add(new karta5());
-        System.out.println("Balicek zrobeny\n---------------------------------");
+        System.out.println("Balicek zrobeny\n---------------------");
     }
 }

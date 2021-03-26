@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class hraciaDoska {
 
-    public ArrayList<policko> doska = new ArrayList<policko>();
+    public ArrayList<policko> doska = new ArrayList<>();
 
     public hraciaDoska() {
         zrobDosku();
@@ -41,13 +41,4 @@ public class hraciaDoska {
 
         System.out.println("Hracia doska zrobena!\n---------------------");
     }
-
-    public ArrayList<policko> getDoska() {
-        return doska;
-    }
-
-    public void setDoska(ArrayList<policko> doska) {
-        this.doska = doska;
-    }
-
 }

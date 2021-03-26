@@ -23,17 +23,17 @@ public class hrac {
         //this.poziciaHracaNaploche = 1;
     }
 
-    public int hodKockou(){
+    public void hodKockou(){
         readString("Pre hod kockou stlacte enter");
         Random rand = new Random();
         int jedenHod = 1 + rand.nextInt(6);
         this.poziciaHracaNaploche = poziciaHracaNaploche+jedenHod;
+        System.out.println("Hodil si "+jedenHod);
         if (poziciaHracaNaploche>=24){
             this.poziciaHracaNaploche=poziciaHracaNaploche-24;
             setPeniaze(peniaze+20);
             System.out.println("Presiel si startom. Dostal si 20 peniazov");
         }
-        return jedenHod;
     }
     //*/
     public String getMeno() {
