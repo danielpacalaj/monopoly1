@@ -2,10 +2,12 @@ package sk.stuba.fei.uim.oop.sancoveKarty;
 
 public class karta1 extends karta {
 
+    public int a=1;
+
     public karta1() {
-        chodNaStart();
     }
-    public voi chodNaStart(){
-        set
+
+    public int getA() {
+        return a;
     }
 }

@@ -3,10 +3,7 @@ package sk.stuba.fei.uim.oop;
 import sk.stuba.fei.uim.oop.hraciaPlocha.*;
 import sk.stuba.fei.uim.oop.sancoveKarty.balicek;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Random;
+import java.util.*;
 
 import static sk.stuba.fei.uim.oop.zKlavesnice.*;
 
@@ -21,15 +18,22 @@ public class hra {
     }
 
     public void pridajHracov(){
-
-        System.out.println("Zadajte pocet hracov!");
-        int pocetHracov = readInt();
-        int i;
-        for(i=1;i<=pocetHracov;i++){
-            System.out.println("Zadajte meno "+i+" hraca");
-            hraci.add(new hrac(readString()+" "+i));
+        boolean pridavanie = true;
+        while(pridavanie) {
+            try {
+                System.out.println("Zadajte pocet hracov!");
+                int pocetHracov = readInt();
+                int i;
+                for (i = 1; i <= pocetHracov; i++) {
+                    System.out.println("Zadajte meno " + i + " hraca");
+                    hraci.add(new hrac(readString()));
+                }
+                pridavanie = false;
+            } catch (Exception e) {
+                System.out.println("Chybny vstup. Opakujte prosim!");
+                //readInt();
+            }
         }
-
     }
 
     public void zrobHru(){
