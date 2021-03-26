@@ -3,7 +3,7 @@ package sk.stuba.fei.uim.oop.sancoveKarty;
 import java.util.ArrayList;
 
 public class balicek {
-    public ArrayList<karta> karty = new ArrayList<karta>();
+    public ArrayList<karta> karty = new ArrayList<>();
     public balicek() {
         zrobBalicek();
     }

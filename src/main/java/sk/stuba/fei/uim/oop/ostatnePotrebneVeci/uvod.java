@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.ostatnePotrebneVeci;
 
 public class uvod {
     public uvod() {

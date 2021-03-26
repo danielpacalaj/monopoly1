@@ -16,16 +16,11 @@ public class budova extends policko{
 
     @Override
     public String toString() {
-        return "Meno " + menoPolicka  +
+        return menoPolicka  +
                 " [cenaPredaj=" + cenaPredaj +
                 ", cenaNajmu=" + cenaNajmu +
                 "]";
     }
-
-    public void kup(){
-
-    }
-
     public int getVlastnikId() {
         return vlastnikId;
     }

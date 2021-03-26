@@ -7,10 +7,6 @@ public class dan extends policko{
         this.menoPolicka = "Zaplat dan!";
     }
 
-    public void zaplatDan(){
-       // int peniaze = getPeniaze();
-    }
-
     @Override
     public String toString() {
         return "Dan";

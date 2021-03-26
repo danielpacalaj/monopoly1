@@ -1,17 +1,15 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.ostatnePotrebneVeci;
 
 import sk.stuba.fei.uim.oop.hraciaPlocha.*;
 import sk.stuba.fei.uim.oop.sancoveKarty.balicek;
 import java.util.Scanner;
 import java.util.*;
 
-import static sk.stuba.fei.uim.oop.zKlavesnice.*;
+import static sk.stuba.fei.uim.oop.ostatnePotrebneVeci.zKlavesnice.*;
 
 public class hra {
 
-    public ArrayList<hrac> hraci = new ArrayList<hrac>();
-    //public ArrayList<balicek> karty = new ArrayList<balicek>();
-
+    public ArrayList<hrac> hraci = new ArrayList<>();
 
     public hra() {
         zrobHru();
@@ -22,7 +20,7 @@ public class hra {
         int pocetHracov=0;
         Scanner input = new Scanner(System.in);
         System.out.println("Zadajte pocet hracov!");
-        while(pridavanie==true) {
+        while(pridavanie) {
             if (input.hasNextInt()){
                 pocetHracov = input.nextInt();
                 pridavanie = false;
@@ -53,7 +51,7 @@ public class hra {
                 System.out.println("---------------------\nNa rade je hrac " + this.hraci.get(i).getMeno());
                 if(this.hraci.get(i).getPocetKolVoVazeni()>0){
                    this.hraci.get(i).setPocetKolVoVazeni(this.hraci.get(i).getPocetKolVoVazeni()-1);
-                   System.out.println("Si v base. Stojis este"+this.hraci.get(i).getPocetKolVoVazeni()+" kol");
+                   System.out.println("Si v base. Stojis este "+this.hraci.get(i).getPocetKolVoVazeni()+" kol");
                    continue;
                 }
                 else {
@@ -111,7 +109,7 @@ public class hra {
                         System.out.println("Sanca ta presunula na policko "+this.hraci.get(i).poziciaHracaNaploche+
                                 " co je "+plocha.doska.get(this.hraci.get(i).getPoziciaHracaNaploche()));
                         pocitadloSance++;
-                        if(pocitadloSance==4){
+                        if(pocitadloSance==5){
                             pocitadloSance=0;
                         }
 
@@ -126,10 +124,7 @@ public class hra {
         }
 
         System.out.println("---------------------\nVyhral hrac "+this.hraci.get(0).getMeno());
+        System.out.println(this.hraci.get(0).getMeno()+" je riadny kral");
         this.hraci.remove(0);
-    }
-
-    public ArrayList<hrac> getHraci() {
-        return hraci;
     }
 }

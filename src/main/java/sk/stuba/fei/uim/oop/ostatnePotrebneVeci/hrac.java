@@ -1,15 +1,13 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.ostatnePotrebneVeci;
 
 import sk.stuba.fei.uim.oop.hraciaPlocha.budova;
 
 import java.util.Random;
 
-import static sk.stuba.fei.uim.oop.zKlavesnice.readChar;
-import static sk.stuba.fei.uim.oop.zKlavesnice.readString;
+import static sk.stuba.fei.uim.oop.ostatnePotrebneVeci.zKlavesnice.readString;
 
 public class hrac {
     public String meno;
-    protected boolean stav = true;
     protected budova nedhnutelnosti =null;
     protected int peniaze =100;
     protected int poziciaHracaNaploche = 1;
@@ -17,10 +15,6 @@ public class hrac {
 
     public hrac(String meno){
         this.meno = meno;
-        //this.stav = true;
-        //this.nedhnutelnosti = null;
-        //this.peniaze = 500;
-        //this.poziciaHracaNaploche = 1;
     }
 
     public void hodKockou(){
@@ -38,18 +32,6 @@ public class hrac {
     //*/
     public String getMeno() {
         return meno;
-    }
-
-    public boolean isStav() {
-        return stav;
-    }
-
-    public void setStav(boolean stav) {
-        this.stav = stav;
-    }
-
-    public budova getNedhnutelnosti() {
-        return nedhnutelnosti;
     }
 
     public void setNedhnutelnosti(budova nedhnutelnosti) {
